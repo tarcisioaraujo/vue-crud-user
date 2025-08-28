@@ -3,6 +3,11 @@
     <div class="container">
       <h2 class="text-center mt-5 mb-3">Lista de usuários</h2>
       <div class="card">
+        <div class="card-header">
+          <router-link to="/create" class="btn btn-outline-primary">
+            Criar novo usuário
+          </router-link>
+        </div>
         <div class="card-body">
           <table class="table table-bordered">
             <thead>

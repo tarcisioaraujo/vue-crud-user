@@ -1,4 +1,14 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import App from "./App.vue";
+import axios from "axios";
+import "bootstrap/dist/css/bootstrap.css";
+import { createRouter, createWebHistory } from "vue-router";
+import UserList from "./components/pages/UserList";
 
-createApp(App).mount('#app')
+axios.defaults.baseURL = process.env.VUE_APP_API_URL;
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [{ path: "/", component: UserList }],
+});
+
+createApp(App).use(router).mount("#app");

@@ -51,7 +51,6 @@ export default {
       axios
         .get("/api/registerUsers")
         .then((response) => {
-          console.log("response.data", response.data);
           this.users = response.data.data;
           return response;
         })

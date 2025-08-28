@@ -39,12 +39,15 @@
             <select
               v-model="user.profile_id"
               id="profile_id"
-              class="form-control"
+              class="form-select"
             >
-              <option selected>Selecione</option>
-              <option value="1">Perfil 1</option>
-              <option value="2">Perfil 2</option>
-              <option value="3">Perfil 3</option>
+              <option
+                v-for="profile in profiles"
+                :key="profile.id"
+                :value="profile.id"
+              >
+                {{ profile.name }}
+              </option>
             </select>
           </div>
           <button
@@ -80,10 +83,25 @@ export default {
         profile_id: "",
         addresses_ids: [1, 2],
       },
+      profiles: [],
       isSaving: false,
     };
   },
+  created() {
+    this.fetchProfileList();
+  },
   methods: {
+    fetchProfileList() {
+      axios
+        .get("/api/profiles")
+        .then((response) => {
+          this.profiles = response.data.data;
+          return response;
+        })
+        .catch((error) => {
+          return error;
+        });
+    },
     handleSave() {
       this.isSaving = true;
       console.log("this.user", this.user);

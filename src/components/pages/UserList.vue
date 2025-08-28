@@ -13,13 +13,26 @@
             <thead>
               <tr>
                 <th>Nome</th>
+                <th>CPF</th>
                 <th>E-mail</th>
+                <th>Perfil</th>
+                <th>Ação</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="user in users" :key="user.id">
                 <td>{{ user.name }}</td>
+                <td>{{ user.cpf }}</td>
                 <td>{{ user.email }}</td>
+                <td>{{ user.profile.name }}</td>
+                <td>
+                  <button
+                    @click="handleDelete(user.id)"
+                    className="btn btn-outline-danger mx-1"
+                  >
+                    Apagar
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -32,6 +45,7 @@
 <script>
 import axios from "axios";
 import LayoutDiv from "../LayoutDiv.vue";
+import Swal from "sweetalert2";
 
 export default {
   name: "UserList",
@@ -57,6 +71,41 @@ export default {
         .catch((error) => {
           return error;
         });
+    },
+    handleDelete(id) {
+      Swal.fire({
+        title: "Tem certeza que deseja apagar o usuário?",
+        text: "Não será possível reverter!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "sim, apagar!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .delete(`/api/registerUsers/${id}`)
+            .then((response) => {
+              Swal.fire({
+                icon: "success",
+                title: "usuário apagado com sucesso!",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              this.fetchUserList();
+              return response;
+            })
+            .catch((error) => {
+              Swal.fire({
+                icon: "error",
+                title: "An Error Occured!",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              return error;
+            });
+        }
+      });
     },
   },
 };

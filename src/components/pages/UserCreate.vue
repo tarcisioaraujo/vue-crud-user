@@ -2,6 +2,11 @@
   <layout-div>
     <h2 class="text-center mt-5 mb-3">Criar novo usuário</h2>
     <div class="card">
+      <div class="card-header">
+        <router-link class="btn btn-outline-info float-right" to="/"
+          >Visualizar lista de usuários
+        </router-link>
+      </div>
       <div class="card-body">
         <form>
           <div class="form-group">

@@ -50,6 +50,25 @@
               </option>
             </select>
           </div>
+          <div class="form-group">
+            <label htmlFor="profile_id">Endereços</label>
+            <div
+              class="form-check"
+              v-for="address in addresses"
+              :key="address.id"
+            >
+              <input
+                class="form-check-input"
+                type="checkbox"
+                :value="address.id"
+                v-model="user.addresses_ids"
+                :id="address.id"
+              />
+              <label class="form-check-label" :for="address.id">
+                {{ address.street }} (Cep: {{ address.cep }})
+              </label>
+            </div>
+          </div>
           <button
             @click="handleSave()"
             :disabled="isSaving"
@@ -81,14 +100,16 @@ export default {
         cpf: 12345678932,
         email: "",
         profile_id: "",
-        addresses_ids: [1, 2],
+        addresses_ids: [],
       },
       profiles: [],
+      addresses: [],
       isSaving: false,
     };
   },
   created() {
     this.fetchProfileList();
+    this.fetchAddressList();
   },
   methods: {
     fetchProfileList() {
@@ -102,9 +123,19 @@ export default {
           return error;
         });
     },
+    fetchAddressList() {
+      axios
+        .get("/api/address")
+        .then((response) => {
+          this.addresses = response.data.data;
+          return response;
+        })
+        .catch((error) => {
+          return error;
+        });
+    },
     handleSave() {
       this.isSaving = true;
-      console.log("this.user", this.user);
       axios
         .post("/api/registerUsers", this.user)
         .then((response) => {
@@ -118,6 +149,8 @@ export default {
           this.user.name = "";
           this.user.cpf = "";
           this.user.email = "";
+          this.user.profile_id = "";
+          this.user.addresses_ids = "";
           return response;
         })
         .catch((error) => {

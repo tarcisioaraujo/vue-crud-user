@@ -1,24 +1,100 @@
-# vue-crud-user
+<h1 align="center">CRUD usuários</h1>
 
-## Project setup
+Uma aplicação CRUD de usuários com Perfil e Endereços utilizando Vue.js 3 e Bootstrap 5.
+
+<p align="center">
+	<img src="https://img.shields.io/github/license/tarcisioaraujo/vue-crud-user" alt="License">	 
+</p>
+
+<p align="center">
+	<a href="#computer-tecnologias">Tecnologias</a> •	
+	<a href="#white_check_mark-features">Open features</a> •
+	<a href="#runner-começando">Começando</a> •
+	<a href="#warning-pré-requisitos">Pré-requisitos</a> •
+	<a href="#hammer_and_wrench-instalação">Instalação</a> •
+	<a href="#construction_worker-autor">Autor</a> •
+	<a href="#memo-licença">Licença</a>
+</p>
+
+<p align="center">
+	<kbd>
+		<img alt="Login" title="#Login" width="1181" height="480" style="border-radius: 5px" src="./assets/edita-usuario.png">
+	</kbd>
+	<br/><br/>
+	<kbd>
+		<img alt="Login" title="#Login" width="1182" height="318" style="border-radius: 5px" src="./assets/visualizacao-usuario.png">
+	</kbd>
+	<br/><br/>
+    <kbd>
+		<img alt="Login" title="#Login" width="1162" height="293" style="border-radius: 5px" src="./assets/listagem-usuarios.png">
+	</kbd>
+	<br/><br/>
+    <kbd>
+		<img alt="Login" title="#Login" width="1188" height="489" style="border-radius: 5px" src="./assets/cadastro-usuario.png">
+	</kbd>
+	<br/><br/>
+    <kbd>
+		<img alt="Login" title="#Login" width="1137" height="395" style="border-radius: 5px" src="./assets/excluir-usuario.png">
+	</kbd>	
+</p>
+
+## :computer: Tecnologias
+
+- [Vue.js 3](https://vuejs.org/)
+- [Bootstrap 5](https://getbootstrap.com/)
+
+## :white_check_mark: Open features
+
+- [ ] Cadastro de endereços no formulário de cadastro de usuário;
+- [ ] Filtro de usuários;
+- [ ] Página de visualização do usuário com data do cadastro, perfil e sesu respectivos endereços;
+- [ ] Exclusão de endereços sem associação com usuário;
+
+## :runner: Começando
+
+Essas instruções fornecerão uma cópia do projeto instalado e funcionando em sua máquina local.
+
+## :warning: Pré-requisitos
+
+O que você precisar para instalar a aplicação
+
 ```
-yarn install
+Node >= 22.17.1
 ```
 
-### Compiles and hot-reloads for development
+## :hammer_and_wrench: Instalação
+
+Passos para rodar a aplicação
+
 ```
-yarn serve
+# Clonar
+git clone https://github.com/tarcisioaraujo/vue-crud-user.git
+
+# Acessar o diretório
+cd vue-crud-user
+
+# Instalar as dependências do Node JS
+npm install
+
+# Rodar Servidor
+npm run serve
+
+# Acessar o endereço
+http://localhost:8080
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
+## :construction_worker: Autor
 
-### Lints and fixes files
-```
-yarn lint
-```
+<a href="https://github.com/tarcisioaraujo">
+ <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/47223046?v=4" width="100px;" alt=""/>
+ <br />
+ <sub><b>Tarcísio Silva de Araújo</b></sub></a> <a href="https://github.com/tarcisioaraujo" title="GitHub"></a>
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Feito por Tarcísio Silva de Araújo 👋
+
+[![Linkedin Badge](https://img.shields.io/badge/-Tarcísio-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/tarcisiosaraujo/)](https://www.linkedin.com/in/tarcisiosaraujo/)
+[![Gmail Badge](https://img.shields.io/badge/-tarcisio.saraujo@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:tarcisio.saraujo@gmail.com)](mailto:tarcisio.saraujo@gmail.com)
+
+## :memo: Licença
+
+Este projeto esta sobe a licença [MIT](./LICENSE).

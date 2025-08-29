@@ -26,6 +26,11 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.profile.name }}</td>
                 <td>
+                  <router-link
+                    :to="`/edit/${user.id}`"
+                    class="btn btn-outline-success mx-1"
+                    >Editar</router-link
+                  >
                   <button
                     @click="handleDelete(user.id)"
                     className="btn btn-outline-danger mx-1"

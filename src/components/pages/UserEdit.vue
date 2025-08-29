@@ -1,6 +1,6 @@
 <template>
   <layout-div>
-    <h2 class="text-center mt-5 mb-3">Criar novo usuário</h2>
+    <h2 class="text-center mt-5 mb-3">Editar usuário</h2>
     <div class="card">
       <div class="card-header">
         <router-link class="btn btn-outline-info float-right" to="/"
@@ -95,7 +95,7 @@ import LayoutDiv from "../LayoutDiv.vue";
 import Swal from "sweetalert2";
 
 export default {
-  name: "UserCreate",
+  name: "userEdit",
   components: {
     LayoutDiv,
   },
@@ -116,6 +116,28 @@ export default {
   created() {
     this.fetchProfileList();
     this.fetchAddressList();
+    const id = this.$route.params.id;
+    axios
+      .get(`/api/registerUsers/${id}`)
+      .then((response) => {
+        let userInfo = response.data.data;
+        this.user.name = userInfo.name;
+        this.user.cpf = userInfo.cpf;
+        this.user.email = userInfo.email;
+        this.user.profile_id = userInfo.profile.id;
+        const addressesIds = userInfo.address.map((obj) => obj.id);
+        this.user.addresses_ids = addressesIds;
+        return response;
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "An Error Occured!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        return error;
+      });
   },
   methods: {
     fetchProfileList() {
@@ -142,12 +164,13 @@ export default {
     },
     handleSave() {
       this.isSaving = true;
+      const id = this.$route.params.id;
       axios
-        .post("/api/registerUsers", this.user)
+        .patch(`/api/registerUsers/${id}`, this.user)
         .then((response) => {
           Swal.fire({
             icon: "success",
-            title: "Usuário persistido!",
+            title: "Usuário atualizado com sucesso!",
             showConfirmButton: false,
             timer: 1500,
           });

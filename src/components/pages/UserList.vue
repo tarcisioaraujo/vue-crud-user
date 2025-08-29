@@ -12,6 +12,7 @@
           <table class="table table-bordered">
             <thead>
               <tr>
+                <th>Data cadastro</th>
                 <th>Nome</th>
                 <th>CPF</th>
                 <th>E-mail</th>
@@ -21,11 +22,17 @@
             </thead>
             <tbody>
               <tr v-for="user in users" :key="user.id">
+                <td>{{ formatMyDate(user.created_at) }}</td>
                 <td>{{ user.name }}</td>
                 <td>{{ user.cpf }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.profile.name }}</td>
                 <td>
+                  <router-link
+                    :to="`/show/${user.id}`"
+                    class="btn btn-outline-info mx-1"
+                    >Show</router-link
+                  >
                   <router-link
                     :to="`/edit/${user.id}`"
                     class="btn btn-outline-success mx-1"
@@ -111,6 +118,12 @@ export default {
             });
         }
       });
+    },
+    formatMyDate(dateString) {
+      const date = new Date(dateString);
+      return new Intl.DateTimeFormat("pt-BR", { dateStyle: "long" }).format(
+        date
+      );
     },
   },
 };

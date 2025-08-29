@@ -76,6 +76,9 @@ cd vue-crud-user
 # Instalar as dependências do Node JS
 npm install
 
+# Define variáveis
+cp .env.example .env
+
 # Rodar Servidor
 npm run serve
 

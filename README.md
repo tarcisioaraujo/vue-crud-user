@@ -47,7 +47,7 @@ Uma aplicação CRUD de usuários com Perfil e Endereços utilizando Vue.js 3 e 
 
 - [ ] Cadastro de endereços no formulário de cadastro de usuário;
 - [ ] Filtro de usuários;
-- [ ] Página de visualização do usuário com data do cadastro, perfil e sesu respectivos endereços;
+- [ ] Página de visualização do usuário com data do cadastro, perfil e seus respectivos endereços;
 - [ ] Exclusão de endereços sem associação com usuário;
 
 ## :runner: Começando

@@ -58,6 +58,37 @@
           </div>
           <div class="form-group">
             <label htmlFor="profile_id">Endereços</label>
+            <div class="container overflow-hidden bg-light p-3">
+              <form>
+                <div class="form-group">
+                  <label htmlFor="name">Logradouro</label>
+                  <input
+                    v-model="address.street"
+                    type="text"
+                    class="form-control"
+                    id="street"
+                    name="street"
+                  />
+                </div>
+                <div class="form-group">
+                  <label htmlFor="name">CEP</label>
+                  <input
+                    v-model="address.cep"
+                    type="text"
+                    class="form-control"
+                    id="cep"
+                    name="cep"
+                  />
+                </div>
+                <button
+                  @click="handleSaveAddress()"
+                  type="button"
+                  class="btn btn-outline-primary mt-3"
+                >
+                  Cadastrar novo endereço
+                </button>
+              </form>
+            </div>
             <div
               class="form-check"
               v-for="address in addresses"
@@ -107,6 +138,10 @@ export default {
         email: "",
         profile_id: "",
         addresses_ids: [],
+      },
+      address: {
+        street: "",
+        cep: "",
       },
       profiles: [],
       addresses: [],
@@ -161,6 +196,31 @@ export default {
         })
         .catch((error) => {
           this.isSaving = false;
+          Swal.fire({
+            icon: "error",
+            title: "Ocorreu um erro!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          return error;
+        });
+    },
+    handleSaveAddress() {
+      axios
+        .post("/api/address", this.address)
+        .then((response) => {
+          Swal.fire({
+            icon: "success",
+            title: "Endereço persistido!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          this.address.street = "";
+          this.address.cep = "";
+          this.fetchAddressList();
+          return response;
+        })
+        .catch((error) => {
           Swal.fire({
             icon: "error",
             title: "Ocorreu um erro!",

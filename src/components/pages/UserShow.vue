@@ -7,6 +7,8 @@
           >Visualizar todos usuários
         </router-link>
         <div class="card-body">
+          <b className="text-muted">Data cadastro:</b>
+          <p>{{ user.created_at }}</p>
           <b className="text-muted">Name:</b>
           <p>{{ user.name }}</p>
           <b className="text-muted">CPF:</b>
@@ -32,6 +34,7 @@ export default {
   data() {
     return {
       user: {
+        created_at: "",
         name: "",
         cpf: "",
         email: "",
@@ -39,12 +42,21 @@ export default {
       isSaving: false,
     };
   },
+  methods: {
+    formatMyDate(dateString) {
+      const date = new Date(dateString);
+      return new Intl.DateTimeFormat("pt-BR", { dateStyle: "long" }).format(
+        date
+      );
+    },
+  },
   created() {
     const id = this.$route.params.id;
     axios
       .get(`/api/registerUsers/${id}`)
       .then((response) => {
         let userInfo = response.data.data;
+        this.user.created_at = this.formatMyDate(userInfo.created_at);
         this.user.name = userInfo.name;
         this.user.cpf = userInfo.cpf;
         this.user.email = userInfo.email;
@@ -61,6 +73,5 @@ export default {
         return error;
       });
   },
-  methods: {},
 };
 </script>

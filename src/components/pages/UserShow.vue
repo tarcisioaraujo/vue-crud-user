@@ -17,6 +17,20 @@
           <p>{{ user.email }}</p>
           <b className="text-muted">Perfil:</b>
           <p>{{ user.profileName }}</p>
+          <div class="container overflow-hidden">
+            <legend>Endereços</legend>
+            <div
+              class="row gx-5"
+              v-for="address in user.addresses"
+              :key="address.id"
+            >
+              <div class="col">
+                <div class="p-3 border bg-light">
+                  {{ address.street }} (Cep: {{ address.cep }})
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -35,13 +49,7 @@ export default {
   },
   data() {
     return {
-      user: {
-        created_at: "",
-        name: "",
-        cpf: "",
-        email: "",
-      },
-      isSaving: false,
+      user: {},
     };
   },
   methods: {
@@ -63,6 +71,7 @@ export default {
         this.user.cpf = userInfo.cpf;
         this.user.email = userInfo.email;
         this.user.profileName = userInfo.profile.name;
+        this.user.addresses = userInfo.address;
         return response;
       })
       .catch((error) => {

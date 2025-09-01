@@ -9,6 +9,37 @@
           </router-link>
         </div>
         <div class="card-body">
+          <form class="row g-3">
+            <div class="col-md-6">
+              <label for="inputNome" class="form-label">Nome</label>
+              <input
+                v-model="filterText.name"
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="inputCpf" class="form-label">CPF</label>
+              <input
+                v-model="filterText.cpf"
+                type="number"
+                class="form-control"
+                id="cpf"
+                name="cpf"
+              />
+            </div>
+            <div class="col-12">
+              <button
+                @click="fetchUserList()"
+                type="button"
+                class="btn btn-primary mb-3"
+              >
+                Filtrar
+              </button>
+            </div>
+          </form>
           <table class="table table-bordered">
             <thead>
               <tr>
@@ -67,6 +98,10 @@ export default {
   data() {
     return {
       users: [],
+      filterText: {
+        name: null,
+        cpf: "",
+      },
     };
   },
   created() {
@@ -77,7 +112,23 @@ export default {
       axios
         .get("/api/registerUsers")
         .then((response) => {
-          this.users = response.data.data;
+          let responseUserData = response.data.data;
+          if (this.filterText.name) {
+            responseUserData = responseUserData.filter((user) =>
+              user.name
+                .toLowerCase()
+                .includes(this.filterText.name.toLowerCase())
+            );
+          }
+
+          if (this.filterText.cpf) {
+            responseUserData = responseUserData.filter(
+              (user) => user.cpf == this.filterText.cpf
+            );
+          }
+
+          this.users = responseUserData;
+
           return response;
         })
         .catch((error) => {

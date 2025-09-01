@@ -45,10 +45,10 @@ Uma aplicação CRUD de usuários com Perfil e Endereços utilizando Vue.js 3 e 
 
 ## :white_check_mark: Open features
 
-- [ ] Cadastro de endereços no formulário de cadastro de usuário;
+- [x] Cadastro de endereços no formulário de cadastro de usuário;
 - [ ] Filtro de usuários;
-- [ ] Página de visualização do usuário com data do cadastro, perfil e seus respectivos endereços;
-- [ ] Exclusão de endereços sem associação com usuário;
+- [x] Página de visualização do usuário com data do cadastro, perfil e seus respectivos endereços;
+- [x] Exclusão de endereços sem associação com usuário;
 
 ## :runner: Começando
 

@@ -100,7 +100,7 @@ export default {
             .then((response) => {
               Swal.fire({
                 icon: "success",
-                title: "usuário apagado com sucesso!",
+                title: "Usuário apagado com sucesso!",
                 showConfirmButton: false,
                 timer: 1500,
               });
@@ -110,7 +110,7 @@ export default {
             .catch((error) => {
               Swal.fire({
                 icon: "error",
-                title: "An Error Occured!",
+                title: "Ocorreu um erro!",
                 showConfirmButton: false,
                 timer: 1500,
               });

@@ -104,6 +104,13 @@
               <label class="form-check-label" :for="address.id">
                 {{ address.street }} (Cep: {{ address.cep }})
               </label>
+              <button
+                @click="handleDeleteAddress(address.id)"
+                type="button"
+                className="btn btn-outline-danger mx-3 btn-sm"
+              >
+                Excluir
+              </button>
             </div>
           </div>
           <button
@@ -229,6 +236,42 @@ export default {
           });
           return error;
         });
+    },
+    handleDeleteAddress(id) {
+      Swal.fire({
+        title: "Tem certeza que deseja apagar o endereço?",
+        text: "Não será possível reverter!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "sim, apagar!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .delete(`/api/address/${id}`)
+            .then((response) => {
+              Swal.fire({
+                icon: "success",
+                title: "Endereço apagado com sucesso!",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              this.fetchAddressList();
+              return response;
+            })
+            .catch((error) => {
+              Swal.fire({
+                icon: "error",
+                title:
+                  "Não foi possível excluir o endereço! Ele pode ser o endereço de outro usuário.",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              return error;
+            });
+        }
+      });
     },
   },
 };

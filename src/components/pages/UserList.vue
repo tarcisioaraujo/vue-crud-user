@@ -30,6 +30,26 @@
                 name="cpf"
               />
             </div>
+            <div class="col-md-6">
+              <label for="inputStartDate" class="form-label">Início</label>
+              <input
+                v-model="filterText.startDate"
+                type="date"
+                class="form-control"
+                id="startDate"
+                name="startDate"
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="inputEndDate" class="form-label">Fim</label>
+              <input
+                v-model="filterText.endDate"
+                type="date"
+                class="form-control"
+                id="endDate"
+                name="endDate"
+              />
+            </div>
             <div class="col-12">
               <button
                 @click="fetchUserList()"
@@ -101,6 +121,8 @@ export default {
       filterText: {
         name: null,
         cpf: "",
+        startDate: "",
+        endDate: "",
       },
     };
   },
@@ -125,6 +147,28 @@ export default {
             responseUserData = responseUserData.filter(
               (user) => user.cpf == this.filterText.cpf
             );
+          }
+
+          if (this.filterText.startDate) {
+            const selectedStartDate = new Date(this.filterText.startDate);
+            selectedStartDate.setDate(selectedStartDate.getDate() + 1);
+            selectedStartDate.setHours(0, 0, 0, 0);
+            responseUserData = responseUserData.filter((user) => {
+              const userCreateDate = new Date(user.created_at);
+              userCreateDate.setHours(0, 0, 0, 0);
+              return userCreateDate.getTime() >= selectedStartDate.getTime();
+            });
+          }
+
+          if (this.filterText.endDate) {
+            const selectedEndDate = new Date(this.filterText.endDate);
+            selectedEndDate.setDate(selectedEndDate.getDate() + 1);
+            selectedEndDate.setHours(0, 0, 0, 0);
+            responseUserData = responseUserData.filter((user) => {
+              const userCreateDate = new Date(user.created_at);
+              userCreateDate.setHours(0, 0, 0, 0);
+              return userCreateDate.getTime() <= selectedEndDate.getTime();
+            });
           }
 
           this.users = responseUserData;

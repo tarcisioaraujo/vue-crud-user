@@ -8,7 +8,6 @@ Uma aplicação CRUD de usuários com Perfil e Endereços utilizando Vue.js 3 e 
 
 <p align="center">
 	<a href="#computer-tecnologias">Tecnologias</a> •	
-	<a href="#white_check_mark-features">Open features</a> •
 	<a href="#runner-começando">Começando</a> •
 	<a href="#warning-pré-requisitos">Pré-requisitos</a> •
 	<a href="#hammer_and_wrench-instalação">Instalação</a> •
@@ -42,13 +41,6 @@ Uma aplicação CRUD de usuários com Perfil e Endereços utilizando Vue.js 3 e 
 
 - [Vue.js 3](https://vuejs.org/)
 - [Bootstrap 5](https://getbootstrap.com/)
-
-## :white_check_mark: Open features
-
-- [x] Cadastro de endereços no formulário de cadastro de usuário;
-- [ ] Filtro de usuários;
-- [x] Página de visualização do usuário com data do cadastro, perfil e seus respectivos endereços;
-- [x] Exclusão de endereços sem associação com usuário;
 
 ## :runner: Começando
 

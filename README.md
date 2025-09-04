@@ -15,25 +15,25 @@ Uma aplicação CRUD de usuários com Perfil e Endereços utilizando Vue.js 3 e 
 	<a href="#memo-licença">Licença</a>
 </p>
 
-<p align="center">
+<p align="center">	
 	<kbd>
-		<img alt="Login" title="#Login" width="1181" height="480" style="border-radius: 5px" src="./assets/edita-usuario.png">
+		<img alt="Login" title="#Login" width="1304" height="787" style="border-radius: 5px" src="./assets/cadastro-usuario.png">
 	</kbd>
 	<br/><br/>
 	<kbd>
-		<img alt="Login" title="#Login" width="1182" height="318" style="border-radius: 5px" src="./assets/visualizacao-usuario.png">
+		<img alt="Login" title="#Login" width="1282" height="717" style="border-radius: 5px" src="./assets/listagem-usuarios.png">
 	</kbd>
 	<br/><br/>
     <kbd>
-		<img alt="Login" title="#Login" width="1162" height="293" style="border-radius: 5px" src="./assets/listagem-usuarios.png">
+		<img alt="Login" title="#Login" width="1303" height="632" style="border-radius: 5px" src="./assets/visualizacao-usuario.png">
 	</kbd>
 	<br/><br/>
     <kbd>
-		<img alt="Login" title="#Login" width="1188" height="489" style="border-radius: 5px" src="./assets/cadastro-usuario.png">
+		<img alt="Login" title="#Login" width="1305" height="554" style="border-radius: 5px" src="./assets/edita-usuario.png">
 	</kbd>
 	<br/><br/>
     <kbd>
-		<img alt="Login" title="#Login" width="1137" height="395" style="border-radius: 5px" src="./assets/excluir-usuario.png">
+		<img alt="Login" title="#Login" width="1285" height="719" style="border-radius: 5px" src="./assets/excluir-usuario.png">
 	</kbd>	
 </p>
 
